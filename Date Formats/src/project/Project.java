@@ -13,7 +13,8 @@ public class Project {
     private String shortdate2;
     private String longDate2;
     
-    public Project (int day,int month,int year, String type,String shortDate,String longDate){
+    public Project (int day,int month,int year, String type,
+                    String shortDate,String longDate){
         this.day=day;
         this.month=month;
         this.year=year;
