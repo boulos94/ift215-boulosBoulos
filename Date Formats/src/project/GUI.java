@@ -28,7 +28,6 @@ public class GUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
         pnlDate = new javax.swing.JPanel();
         lblDay = new javax.swing.JLabel();
         txtDay = new javax.swing.JTextField();
@@ -38,13 +37,13 @@ public class GUI extends javax.swing.JFrame {
         txtYear = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         lblType = new javax.swing.JLabel();
-        rbnShortDate = new javax.swing.JRadioButton();
-        rbnLongDate = new javax.swing.JRadioButton();
         lblShortDate = new javax.swing.JLabel();
         cmbShortDate = new javax.swing.JComboBox();
         lblLongDate = new javax.swing.JLabel();
         cmbLongDate = new javax.swing.JComboBox();
         btmSubmit = new javax.swing.JButton();
+        cbShortDate = new javax.swing.JCheckBox();
+        cbLongDate = new javax.swing.JCheckBox();
         jPanel1 = new javax.swing.JPanel();
         lblShortdate2 = new javax.swing.JLabel();
         lblLongDate2 = new javax.swing.JLabel();
@@ -81,16 +80,16 @@ public class GUI extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(lblDay)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(lblMonth)
+                .addComponent(txtDay, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(lblMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 71, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addComponent(txtMonth, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(lblYear)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(txtYear, javax.swing.GroupLayout.PREFERRED_SIZE, 44, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(38, Short.MAX_VALUE))
+                .addContainerGap(27, Short.MAX_VALUE))
         );
         pnlDateLayout.setVerticalGroup(
             pnlDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -110,15 +109,6 @@ public class GUI extends javax.swing.JFrame {
 
         lblType.setText("Type:");
 
-        rbnShortDate.setText("Short date");
-        rbnShortDate.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rbnShortDateActionPerformed(evt);
-            }
-        });
-
-        rbnLongDate.setText("Long date");
-
         lblShortDate.setText("Short date:");
 
         cmbShortDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MM/dd/yy" }));
@@ -134,26 +124,33 @@ public class GUI extends javax.swing.JFrame {
 
         btmSubmit.setText("Submit");
 
+        cbShortDate.setText("short date");
+
+        cbLongDate.setText("long date");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btmSubmit)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(lblType)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(rbnShortDate)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(rbnLongDate))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btmSubmit)
-                        .addGroup(jPanel2Layout.createSequentialGroup()
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(lblLongDate)
-                                .addComponent(lblShortDate))
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblLongDate)
+                                    .addComponent(lblShortDate))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(lblType)
+                                .addGap(31, 31, 31)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(cbShortDate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbLongDate))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                 .addComponent(cmbShortDate, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(cmbLongDate, 0, 105, Short.MAX_VALUE)))))
@@ -162,11 +159,11 @@ public class GUI extends javax.swing.JFrame {
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblType)
-                    .addComponent(rbnShortDate)
-                    .addComponent(rbnLongDate))
+                    .addComponent(cbShortDate)
+                    .addComponent(cbLongDate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblShortDate)
@@ -185,6 +182,9 @@ public class GUI extends javax.swing.JFrame {
 
         lblLongDate2.setText("Long date:");
 
+        txtShortDate2.setEditable(false);
+
+        txtLongDate2.setEditable(false);
         txtLongDate2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtLongDate2ActionPerformed(evt);
@@ -254,10 +254,6 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtMonthActionPerformed
 
-    private void rbnShortDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbnShortDateActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rbnShortDateActionPerformed
-
     private void cmbShortDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbShortDateActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbShortDateActionPerformed
@@ -303,7 +299,8 @@ public class GUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btmSubmit;
-    private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JCheckBox cbLongDate;
+    private javax.swing.JCheckBox cbShortDate;
     private javax.swing.JComboBox cmbLongDate;
     private javax.swing.JComboBox cmbShortDate;
     private javax.swing.JPanel jPanel1;
@@ -317,8 +314,6 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JLabel lblType;
     private javax.swing.JLabel lblYear;
     private javax.swing.JPanel pnlDate;
-    private javax.swing.JRadioButton rbnLongDate;
-    private javax.swing.JRadioButton rbnShortDate;
     private javax.swing.JTextField txtDay;
     private javax.swing.JTextField txtLongDate2;
     private javax.swing.JTextField txtMonth;
