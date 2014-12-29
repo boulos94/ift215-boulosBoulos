@@ -123,6 +123,11 @@ public class GUI extends javax.swing.JFrame {
         cmbLongDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MMMM dd,yy", " " }));
 
         btmSubmit.setText("Submit");
+        btmSubmit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btmSubmitActionPerformed(evt);
+            }
+        });
 
         cbShortDate.setText("short date");
 
@@ -261,6 +266,12 @@ public class GUI extends javax.swing.JFrame {
     private void txtLongDate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLongDate2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtLongDate2ActionPerformed
+
+    private void btmSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmSubmitActionPerformed
+        // TODO add your handling code here:
+       
+       
+    }//GEN-LAST:event_btmSubmitActionPerformed
 
     /**
      * @param args the command line arguments

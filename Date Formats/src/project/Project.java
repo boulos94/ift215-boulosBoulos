@@ -4,17 +4,18 @@ package project;
 
 public class Project {
     
-    private int day;
+    private int day ;
     private int month;
     private int year;
     private String type;
-    private String shortDate;
-    private String longDate;
+    private boolean shortDate;
+    private boolean longDate;
     private String shortdate2;
     private String longDate2;
     
     public Project (int day,int month,int year, String type,
-                    String shortDate,String longDate){
+                    boolean shortDate,boolean longDate){
+        
         this.day=day;
         this.month=month;
         this.year=year;
@@ -56,19 +57,36 @@ public class Project {
    }
    
    
-   public String getShortDate(){
+   public boolean getShortDate(){
        return shortDate;
    }
-   public void setShortDate(String shortDate){
+   public void setShortDate(boolean shortDate){
        this.shortDate=shortDate;
    }
    
    
-   public String getLongDate(){
+   public boolean getLongDate(){
        return longDate;
    }
-   public void setLongDate(String longDate){
+   public void setLongDate(boolean longDate){
        this.longDate=longDate;
    }
+   
+   public void putday (int day){
+       if ((day>0)&&(day>=31)){
+           this.day=day;
+       }
+   } 
+   
+    public void putMonth (int month){
+       if((month>0)&&(month<=12)){
+           this.month=month;}
+   }
+    
+    public void putYear (int year){
+        if ((year>=1900)&&(year<=2100)){
+            this.year=year;
+        }
+    }
    
 }
