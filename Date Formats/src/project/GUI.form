@@ -103,6 +103,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtDay">
           <Events>
+            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtDayCaretUpdate"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtDayActionPerformed"/>
           </Events>
         </Component>
@@ -113,6 +114,7 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtMonth">
           <Events>
+            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtMonthCaretUpdate"/>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtMonthActionPerformed"/>
           </Events>
         </Component>
@@ -122,6 +124,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtYear">
+          <Events>
+            <EventHandler event="caretUpdate" listener="javax.swing.event.CaretListener" parameters="javax.swing.event.CaretEvent" handler="txtYearCaretUpdate"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>

@@ -24,6 +24,10 @@ public class Project {
         this.longDate=longDate;
         
     }
+
+    Project(String shortDate2) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     public int getDay (){
         return day;
@@ -72,21 +76,5 @@ public class Project {
        this.longDate=longDate;
    }
    
-   public void putday (int day){
-       if ((day>0)&&(day>=31)){
-           this.day=day;
-       }
-   } 
-   
-    public void putMonth (int month){
-       if((month>0)&&(month<=12)){
-           this.month=month;}
-   }
-    
-    public void putYear (int year){
-        if ((year>=1900)&&(year<=2100)){
-            this.year=year;
-        }
-    }
    
 }

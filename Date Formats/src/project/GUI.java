@@ -17,8 +17,11 @@ public class GUI extends javax.swing.JFrame {
      */
     public GUI() {
         initComponents();
+        rootPane.setDefaultButton(btmSubmit);
+        this.setTitle("Date Formats");
+        
+        
     }
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,6 +59,11 @@ public class GUI extends javax.swing.JFrame {
 
         lblDay.setText("Day:");
 
+        txtDay.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtDayCaretUpdate(evt);
+            }
+        });
         txtDay.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtDayActionPerformed(evt);
@@ -64,6 +72,11 @@ public class GUI extends javax.swing.JFrame {
 
         lblMonth.setText("Month:");
 
+        txtMonth.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtMonthCaretUpdate(evt);
+            }
+        });
         txtMonth.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtMonthActionPerformed(evt);
@@ -71,6 +84,12 @@ public class GUI extends javax.swing.JFrame {
         });
 
         lblYear.setText("year:");
+
+        txtYear.addCaretListener(new javax.swing.event.CaretListener() {
+            public void caretUpdate(javax.swing.event.CaretEvent evt) {
+                txtYearCaretUpdate(evt);
+            }
+        });
 
         javax.swing.GroupLayout pnlDateLayout = new javax.swing.GroupLayout(pnlDate);
         pnlDate.setLayout(pnlDateLayout);
@@ -269,9 +288,37 @@ public class GUI extends javax.swing.JFrame {
 
     private void btmSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmSubmitActionPerformed
         // TODO add your handling code here:
-       
+        
        
     }//GEN-LAST:event_btmSubmitActionPerformed
+
+    private void txtDayCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtDayCaretUpdate
+        // TODO add your handling code here:
+      
+
+    if(txtDay.getText().length()>=3)
+    {
+        txtDay.setText(txtDay.getText().substring(0, 2));
+    }
+
+    }//GEN-LAST:event_txtDayCaretUpdate
+
+    private void txtMonthCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMonthCaretUpdate
+        // TODO add your handling code here:
+        if(txtMonth.getText().length()>=3)
+    {
+        txtMonth.setText(txtMonth.getText().substring(0, 2));
+    }
+    }//GEN-LAST:event_txtMonthCaretUpdate
+
+    private void txtYearCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtYearCaretUpdate
+        // TODO add your handling code here:
+        if(txtYear.getText().length()>=5)
+    {
+        txtYear.setText(txtYear.getText().substring(0, 4));
+    }
+   
+    }//GEN-LAST:event_txtYearCaretUpdate
 
     /**
      * @param args the command line arguments
