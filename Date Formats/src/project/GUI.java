@@ -8,6 +8,7 @@ package project;
 
 
 
+
 import javax.swing.JOptionPane;
 
 /**
@@ -27,7 +28,7 @@ public class GUI extends javax.swing.JFrame {
         cbShortDate.setSelected(true);
         rootPane.setDefaultButton(btmSubmit);
         this.setTitle("Date Formats");
-        
+       
         
     }
     /**
@@ -77,6 +78,14 @@ public class GUI extends javax.swing.JFrame {
                 txtDayActionPerformed(evt);
             }
         });
+        txtDay.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtDayKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtDayKeyTyped(evt);
+            }
+        });
 
         lblMonth.setText("Month:");
 
@@ -90,12 +99,28 @@ public class GUI extends javax.swing.JFrame {
                 txtMonthActionPerformed(evt);
             }
         });
+        txtMonth.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtMonthKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMonthKeyTyped(evt);
+            }
+        });
 
         lblYear.setText("year:");
 
         txtYear.addCaretListener(new javax.swing.event.CaretListener() {
             public void caretUpdate(javax.swing.event.CaretEvent evt) {
                 txtYearCaretUpdate(evt);
+            }
+        });
+        txtYear.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtYearKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtYearKeyTyped(evt);
             }
         });
 
@@ -147,7 +172,7 @@ public class GUI extends javax.swing.JFrame {
 
         lblLongDate.setText("Long date:");
 
-        cmbLongDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MMMM dd,yyyy" }));
+        cmbLongDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MMMM dd,yyyy", "yyyy mmmm-dd" }));
 
         btmSubmit.setText("Submit");
         btmSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -157,6 +182,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         cbShortDate.setText("short date");
+        cbShortDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbShortDateActionPerformed(evt);
+            }
+        });
 
         cbLongDate.setText("long date");
 
@@ -280,6 +310,8 @@ public class GUI extends javax.swing.JFrame {
 
     private void txtDayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDayActionPerformed
         // TODO add your handling code here:
+      
+        
     }//GEN-LAST:event_txtDayActionPerformed
 
     private void txtMonthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtMonthActionPerformed
@@ -288,10 +320,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void cmbShortDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbShortDateActionPerformed
         // TODO add your handling code here:
-        if(cbShortDate.isSelected()){
-    cmbShortDate.setEnabled(true);
-    cmbLongDate.setEnabled(false);
-        }
+        
     }//GEN-LAST:event_cmbShortDateActionPerformed
 
     private void txtLongDate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLongDate2ActionPerformed
@@ -301,7 +330,7 @@ public class GUI extends javax.swing.JFrame {
     private void btmSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmSubmitActionPerformed
         // TODO add your handling code here:
         if(txtDay.getText().trim().equals("") || (txtMonth.getText().trim().equals("")) || (txtYear.getText().trim().equals(""))){
-            JOptionPane.showMessageDialog(this, "Please enter a valid day, month or year","Waring",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "some info is missing","Waring",JOptionPane.INFORMATION_MESSAGE);
         }
          int day=Integer.parseInt(txtDay.getText().trim());
          int month=Integer.parseInt(txtMonth.getText().trim());
@@ -342,7 +371,7 @@ public class GUI extends javax.swing.JFrame {
         if(cbLongDate.isSelected()){ 
          Project re = 
                 new Project(day,month,year,Type,longDate,shortDate,txtShortDate,txtLongDate,longDate2,shortDate2);
-                txtLongDate2.setText(re.getLongDates());
+                txtLongDate2.setText(re.getLongDateForm());
         }
         else {
             
@@ -360,35 +389,73 @@ public class GUI extends javax.swing.JFrame {
             new Project(day,month,year,Type,longDate,shortDate,txtShortDate,txtLongDate,longDate2,shortDate2);
                             txtShortDate2.setText(re.getShortDates12());
         }
+        
+       
     }//GEN-LAST:event_btmSubmitActionPerformed
 
     private void txtDayCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtDayCaretUpdate
         // TODO add your handling code here:
-      
+    
 
-    if(txtDay.getText().length()>=3)
-    {
-        txtDay.setText(txtDay.getText().substring(1, 2));
-    }
-
+    
     }//GEN-LAST:event_txtDayCaretUpdate
 
     private void txtMonthCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtMonthCaretUpdate
         // TODO add your handling code here:
-        if(txtMonth.getText().length()>=3)
-    {
-        txtMonth.setText(txtMonth.getText().substring(1, 2));
-    }
+      
     }//GEN-LAST:event_txtMonthCaretUpdate
 
     private void txtYearCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtYearCaretUpdate
         // TODO add your handling code here:
-        if(txtYear.getText().length()>=5)
-    {
-        txtYear.setText(txtYear.getText().substring(4, 4));
-    }
+        
    
     }//GEN-LAST:event_txtYearCaretUpdate
+
+    private void txtDayKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDayKeyPressed
+        // TODO add your handling code here:
+      
+        
+        
+    }//GEN-LAST:event_txtDayKeyPressed
+
+    private void txtMonthKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMonthKeyPressed
+        // TODO add your handling code here:
+     
+    }//GEN-LAST:event_txtMonthKeyPressed
+
+    private void txtYearKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtYearKeyPressed
+        // TODO add your handling code here:
+      
+    }//GEN-LAST:event_txtYearKeyPressed
+
+    private void txtDayKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtDayKeyTyped
+        // TODO add your handling code here:
+        if (txtDay.getText().length() >= 2) {
+            evt.consume();
+        }
+        
+    }//GEN-LAST:event_txtDayKeyTyped
+
+    private void txtMonthKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMonthKeyTyped
+        // TODO add your handling code here:
+        if (txtMonth.getText().length() >= 2) {
+            evt.consume();
+        }
+       
+    }//GEN-LAST:event_txtMonthKeyTyped
+
+    private void txtYearKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtYearKeyTyped
+        // TODO add your handling code here:
+        if (txtYear.getText().length() >= 4) {
+            evt.consume();
+        }
+       
+    }//GEN-LAST:event_txtYearKeyTyped
+
+    private void cbShortDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbShortDateActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_cbShortDateActionPerformed
 
     /**
      * @param args the command line arguments

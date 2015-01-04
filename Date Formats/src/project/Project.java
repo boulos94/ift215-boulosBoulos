@@ -216,6 +216,16 @@ public class Project {
             dateForm=getShortDates2();
         return dateForm;
   }
+  
+  
+  public String getLongDateForm(){
+      String longDateForm = null;
+      if (txtLongDate=="MMMM dd,yyyy")
+          longDateForm=getLongDates();
+      else if(txtLongDate=="yyyy mmmm-dd")
+          longDateForm=getLongDatess();
+      return longDateForm;
+  }
         
         
    public String getLongDates12(){
@@ -231,5 +241,9 @@ public class Project {
         return longDates;
     }
    
-   
+   public String getLongDatess(){
+       String longDatess;
+       longDatess=year+" "+longMonth()+"-"+zeroD();
+       return longDatess;
+   }
 }
