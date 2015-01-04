@@ -169,10 +169,10 @@ public class Project {
    }
    
    public String zeroM(){
-       String zeroM =null;
+       String zeroM= null ;
        if((this.month>=1)&&(this.month<=9))
            zeroM ="0"+this.month;
-       else this.month=this.month;
+       else zeroM=""+this.month;
        return zeroM;
        
    }
@@ -183,7 +183,7 @@ public class Project {
        String zeroD= null;
       if((this.day>=1)&&(this.day<=9))
           zeroD="0"+this.day;
-      else this.day=this.day;
+      else zeroD=""+this.day;
       return zeroD;
    }
    
