@@ -24,8 +24,9 @@ public class GUI extends javax.swing.JFrame {
     public GUI() {
         
         initComponents();
-        cbLongDate.setSelected(true);
-        cbShortDate.setSelected(true);
+        
+        cbLongDate.setSelected(false);
+        cbShortDate.setSelected(false);
         rootPane.setDefaultButton(btmSubmit);
         this.setTitle("Date Formats");
        
@@ -164,6 +165,7 @@ public class GUI extends javax.swing.JFrame {
         lblShortDate.setText("Short date:");
 
         cmbShortDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MM/dd/yy", "yyyy-MM-dd" }));
+        cmbShortDate.setEnabled(false);
         cmbShortDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbShortDateActionPerformed(evt);
@@ -173,6 +175,7 @@ public class GUI extends javax.swing.JFrame {
         lblLongDate.setText("Long date:");
 
         cmbLongDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MMMM dd,yyyy", "yyyy mmmm-dd" }));
+        cmbLongDate.setEnabled(false);
 
         btmSubmit.setText("Submit");
         btmSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -189,6 +192,11 @@ public class GUI extends javax.swing.JFrame {
         });
 
         cbLongDate.setText("long date");
+        cbLongDate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbLongDateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -215,7 +223,7 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(cbLongDate))
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addComponent(cmbShortDate, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cmbLongDate, javax.swing.GroupLayout.Alignment.LEADING, 0, 115, Short.MAX_VALUE)))))
+                                .addComponent(cmbLongDate, javax.swing.GroupLayout.Alignment.LEADING, 0, 126, Short.MAX_VALUE)))))
                 .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -320,7 +328,7 @@ public class GUI extends javax.swing.JFrame {
 
     private void cmbShortDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbShortDateActionPerformed
         // TODO add your handling code here:
-        
+       
     }//GEN-LAST:event_cmbShortDateActionPerformed
 
     private void txtLongDate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLongDate2ActionPerformed
@@ -454,8 +462,18 @@ public class GUI extends javax.swing.JFrame {
 
     private void cbShortDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbShortDateActionPerformed
         // TODO add your handling code here:
-        
+        if (cbShortDate.isSelected()){
+            cmbShortDate.enable();
+        }
+                
     }//GEN-LAST:event_cbShortDateActionPerformed
+
+    private void cbLongDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbLongDateActionPerformed
+        // TODO add your handling code here:
+         if (cbLongDate.isSelected()){
+            cmbLongDate.enable();
+        }
+    }//GEN-LAST:event_cbLongDateActionPerformed
 
     /**
      * @param args the command line arguments
