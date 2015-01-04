@@ -6,17 +6,25 @@
 
 package project;
 
+
+
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Boulos
  */
 public class GUI extends javax.swing.JFrame {
+    
 
     /**
      * Creates new form GUI
      */
     public GUI() {
+        
         initComponents();
+        cbLongDate.setSelected(true);
+        cbShortDate.setSelected(true);
         rootPane.setDefaultButton(btmSubmit);
         this.setTitle("Date Formats");
         
@@ -130,7 +138,7 @@ public class GUI extends javax.swing.JFrame {
 
         lblShortDate.setText("Short date:");
 
-        cmbShortDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MM/dd/yy" }));
+        cmbShortDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MM/dd/yy", "yyyy-MM-dd" }));
         cmbShortDate.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cmbShortDateActionPerformed(evt);
@@ -139,7 +147,7 @@ public class GUI extends javax.swing.JFrame {
 
         lblLongDate.setText("Long date:");
 
-        cmbLongDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MMMM dd,yy", " " }));
+        cmbLongDate.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "MMMM dd,yyyy" }));
 
         btmSubmit.setText("Submit");
         btmSubmit.addActionListener(new java.awt.event.ActionListener() {
@@ -163,9 +171,9 @@ public class GUI extends javax.swing.JFrame {
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(lblLongDate)
-                                    .addComponent(lblShortDate))
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(lblShortDate)
+                                    .addComponent(lblLongDate))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(lblType)
@@ -175,10 +183,10 @@ public class GUI extends javax.swing.JFrame {
                                 .addComponent(cbShortDate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(cbLongDate))
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(cmbShortDate, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(cmbLongDate, 0, 105, Short.MAX_VALUE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(cmbShortDate, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(cmbLongDate, javax.swing.GroupLayout.Alignment.LEADING, 0, 115, Short.MAX_VALUE)))))
+                .addContainerGap(53, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -194,8 +202,8 @@ public class GUI extends javax.swing.JFrame {
                     .addComponent(cmbShortDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblLongDate)
-                    .addComponent(cmbLongDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cmbLongDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblLongDate))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btmSubmit))
         );
@@ -280,6 +288,10 @@ public class GUI extends javax.swing.JFrame {
 
     private void cmbShortDateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbShortDateActionPerformed
         // TODO add your handling code here:
+        if(cbShortDate.isSelected()){
+    cmbShortDate.setEnabled(true);
+    cmbLongDate.setEnabled(false);
+        }
     }//GEN-LAST:event_cmbShortDateActionPerformed
 
     private void txtLongDate2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtLongDate2ActionPerformed
@@ -288,8 +300,66 @@ public class GUI extends javax.swing.JFrame {
 
     private void btmSubmitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btmSubmitActionPerformed
         // TODO add your handling code here:
-        
-       
+        if(txtDay.getText().trim().equals("") || (txtMonth.getText().trim().equals("")) || (txtYear.getText().trim().equals(""))){
+            JOptionPane.showMessageDialog(this, "Please enter a valid day, month or year","Waring",JOptionPane.INFORMATION_MESSAGE);
+        }
+         int day=Integer.parseInt(txtDay.getText().trim());
+         int month=Integer.parseInt(txtMonth.getText().trim());
+         int year = Integer.parseInt(txtYear.getText().trim());
+         
+         if((day>0)&&(day<32)){
+             txtDay.getText();
+         }
+             else{
+                                         
+             JOptionPane.showMessageDialog(this,"you entered an invalid day please enter a day between 1 & 31","ERROR",JOptionPane.INFORMATION_MESSAGE);
+         }
+         
+         if((month>0)&&(month<13)){
+             txtMonth.getText();
+         }
+             else{
+                                         
+             JOptionPane.showMessageDialog(this,"you entered an invalid month please enter a month between 1 & 12","ERROR",JOptionPane.INFORMATION_MESSAGE);
+         }
+         
+         if((year>1899)&&(year<2101)){
+             txtYear.getText();
+         }
+             else{
+                                         
+             JOptionPane.showMessageDialog(this,"you entered an invalid year please enter a year between 1900 & 2100","ERROR",JOptionPane.INFORMATION_MESSAGE);
+         }
+         String Type =lblType.getText();
+         boolean longDate;
+         boolean shortDate;        
+         longDate = cbShortDate.isSelected();
+         shortDate = cbLongDate.isSelected();
+         String txtLongDate = (String)cmbLongDate.getSelectedItem();
+         String txtShortDate =(String)cmbShortDate.getSelectedItem(); 
+         String longDate2=txtLongDate2.getText();
+         String shortDate2=txtShortDate2.getText();
+        if(cbLongDate.isSelected()){ 
+         Project re = 
+                new Project(day,month,year,Type,longDate,shortDate,txtShortDate,txtLongDate,longDate2,shortDate2);
+                txtLongDate2.setText(re.getLongDates());
+        }
+        else {
+            
+            Project re=
+            new Project(day,month,year,Type,longDate,shortDate,txtShortDate,txtLongDate,longDate2,shortDate2);
+                            txtLongDate2.setText(re.getLongDates12());}
+        if(cbShortDate.isSelected()){
+         Project re=
+                    new Project(day,month,year,Type,longDate,shortDate,txtShortDate,txtLongDate,longDate2,shortDate2);
+                    txtShortDate2.setText(re.getDateForm());}
+                   
+        else
+                    
+        {  Project re=
+            new Project(day,month,year,Type,longDate,shortDate,txtShortDate,txtLongDate,longDate2,shortDate2);
+                            txtShortDate2.setText(re.getShortDates12());
+        }
     }//GEN-LAST:event_btmSubmitActionPerformed
 
     private void txtDayCaretUpdate(javax.swing.event.CaretEvent evt) {//GEN-FIRST:event_txtDayCaretUpdate
@@ -298,7 +368,7 @@ public class GUI extends javax.swing.JFrame {
 
     if(txtDay.getText().length()>=3)
     {
-        txtDay.setText(txtDay.getText().substring(0, 2));
+        txtDay.setText(txtDay.getText().substring(1, 2));
     }
 
     }//GEN-LAST:event_txtDayCaretUpdate
@@ -307,7 +377,7 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(txtMonth.getText().length()>=3)
     {
-        txtMonth.setText(txtMonth.getText().substring(0, 2));
+        txtMonth.setText(txtMonth.getText().substring(1, 2));
     }
     }//GEN-LAST:event_txtMonthCaretUpdate
 
@@ -315,7 +385,7 @@ public class GUI extends javax.swing.JFrame {
         // TODO add your handling code here:
         if(txtYear.getText().length()>=5)
     {
-        txtYear.setText(txtYear.getText().substring(0, 4));
+        txtYear.setText(txtYear.getText().substring(4, 4));
     }
    
     }//GEN-LAST:event_txtYearCaretUpdate
@@ -378,4 +448,8 @@ public class GUI extends javax.swing.JFrame {
     private javax.swing.JTextField txtShortDate2;
     private javax.swing.JTextField txtYear;
     // End of variables declaration//GEN-END:variables
+
+    private String String(String toString) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
